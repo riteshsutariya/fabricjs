@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing path in canvas</title>
+    <style>
+        #canvas {
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body onload="drawPath()">
+    <canvas id="canvas" height="720" width="1024">
+
+    </canvas>
+</body>
+<script>
+    const canvas = document.getElementById("canvas")
+    const context = canvas.getContext("2d")
+    const drawPath = () => {
+        drawTriangle(450, 350, 250, 250, "purple")
+    }
+
+    const drawTriangle = (sX, sY, base, height, color) => {
+        sX = !sX ? 150 : sX
+        sY = !sY ? 150 : sY
+        base = !base ? 150 : base
+        height = !height ? 200 : height
+        color = !color ? "red" : color
+        console.log(`[sX:${sX},sY:${sY},base:${base},height:${height}]`)
+        context.beginPath();
+        context.moveTo(sX, sY);
+        console.log(sX, sY)
+        context.lineTo(sX - (base / 2), sY + height);
+        currentY = sY + height;
+        currentX = sX - (base / 2);
+        context.lineTo(currentX + base, currentY);
+        context.lineTo(sX, sY);
+        context.fillStyle = color
+        context.fill()
+        // context.clearRect(435, 490, 25, 25)
+    }
+</script>
+
+</html>
