@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Native canvas</title>
+    <style>
+        /* #canvas{
+        background-image: url(https://images.pexels.com/photos/13264458/pexels-photo-13264458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+        background-position: top 0 right 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        } */
+    </style>
+</head>
+<body>
+    <canvas id="canvas" height="600" width="1000">
+       Your browser don't support canvas!  <!-- it will display if canvas is not supported in that browser-->
+    </canvas>
+    
+</body>
+<script>
+    const canvas=document.getElementById("canvas")
+    if(!canvas||!canvas.getContext)
+    {
+        alert("no support for canvas!")
+    }
+    const context=canvas.getContext("2d")
+    // context.fillStyle="red";
+    // context.fillRect(25,30,500,300);
+    context.textBaseline="top"
+    context.font="20px _sans"
+    
+
+    //drawing rectangle on canvas
+    context.fillStyle="lightblue"
+    context.fillRect(0,0,300,500);
+
+    //writing text on canvas
+    context.fillStyle="#000000"
+    context.fillText("RiTeSh",180,290);
+
+    //adding image in canvas
+    const imageElement=new Image();
+    imageElement.src="https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+    imageElement.onload=()=>{
+            context.drawImage(imageElement,0,0)
+    }  
+
+    context.strokeStyle="#000000";
+    context.strokeRect(5,5,490,290);
+</script>
+</html>
