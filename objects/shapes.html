@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapes in fabricjs</title>
+    <script src="https://cdn.jsdelivr.net/npm/fabric"></script>
+</head>
+
+<body>
+    <canvas style="border:1px solid;" id="canvas" height="768" width="1024">
+
+    </canvas>
+</body>
+<script>
+    const canvas = new fabric.Canvas('canvas')
+
+    //rectangle
+    let rectangle = new fabric.Rect({
+        top: 100,
+        left: 100,
+        height: 80,
+        width: 100,
+        fill: 'magenta',
+        angle: 45
+    })
+
+    canvas.add(rectangle)
+
+    //circle
+    let circle = new fabric.Circle({
+        top: 100,
+        left: 250,
+        radius: 48,
+        fill: 'red'
+    })
+
+    canvas.add(circle)
+
+    //triangle
+    const triangle = new fabric.Triangle({
+        top: 150,
+        left: 350,
+        height: 120,
+        base: 80,
+        fill: 'blue'
+    })
+
+    canvas.add(triangle)
+
+    //line
+    const line = new fabric.Line([145, 450, 145, 550], {
+        stroke: 'green',
+        strokeWidth: 4
+    })
+
+    canvas.add(line)
+
+    //ellipse
+    const ellipse = new fabric.Ellipse(
+        {
+            rx: 150,
+            ry: 50,
+            radius: 24,
+            fill: 'red',
+            stroke: 'magenta'
+        })
+    canvas.add(ellipse)
+</script>
+
+</html>
