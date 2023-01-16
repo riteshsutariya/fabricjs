@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nativa canvas API and fabricJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/fabric"></script>
+</head>
+
+<body>
+    <canvas style="border:1px solid" id="canvas" height="768" width="1024">
+    </canvas>
+    <canvas style="border:1px solid" id="fcanvas" height="768" width="1024">
+    </canvas>
+</body>
+
+<script>
+
+    //with native canvas api
+    const canvas = document.getElementById("canvas")
+    const context = canvas.getContext("2d")
+
+    context.fillStyle = "red";
+    context.fillRect(250, 250, 45, 45);
+
+    //rotate with native canvas api
+    context.translate(100, 100)
+    context.rotate(Math.PI / 180 * 45)
+    context.fillRect(-10, - 10, 25, 25)
+
+    //with fabricJS
+    //give canvas id to constructor
+    let fcanvas = new fabric.Canvas('fcanvas')
+
+    //create a rectangle object
+    let rect = new fabric.Rect({
+        left: 100,
+        top: 100,
+        width: 45,
+        height: 45
+    })
+
+    //add rectangle on canvas
+    fcanvas.add(rect)
+
+    let rect2 = new fabric.Rect({
+        left: 150,
+        top: 150,
+        width: 25,
+        height: 25,
+        angle: 45,
+        fill: "red"
+    })
+
+    fcanvas.add(rect2)
+
+    //it's too complex to move shape in canvas api as we can't 
+    //operate on object, but in fabricJS it's quite simple
+    rect2.set({ left: 20, top: 50 })
+    fcanvas.renderAll();
+</script>
+
+</html>
