@@ -7,29 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>images in fabricjs</title>
     <style>
-        img{
+        img {
             height: 424px;
             width: 656px;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/fabric"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/fabric"></script>
 </head>
 
 <body>
-    <canvas id="canvas" height="768" width="1024" >
+    <canvas id="canvas" height="768" width="1024">
 
     </canvas>
     <img src="fire-image.jpg" id="my-img" alt="fire_image" srcset="">
 </body>
 
 <script>
-    const canvas =new fabric.Canvas('canvas')
+    const canvas = new fabric.Canvas('canvas')
     var imageElement = document.getElementById("my-img")
-    var imageInstance=new fabric.Image(imageElement,{
-       left:100,
-       top:100,
-       angle:30,
-       opacity:0.5
+    var imageInstance = new fabric.Image(imageElement, {
+        left: 100,
+        top: 100,
+        angle: 30,
+        opacity: 0.5,
+        height: 454,
+        width: 624,
+
     })
     canvas.add(imageInstance)
 </script>
