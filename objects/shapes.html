@@ -13,8 +13,12 @@
     <canvas style="border:1px solid;" id="canvas" height="768" width="1024">
 
     </canvas>
+
+    <button id="rectBtn" onClick="handleRectBtnClick()">remove</button>
 </body>
 <script>
+
+    const rectBtn=document.getElementById("rectBtn")
     const canvas = new fabric.Canvas('canvas')
 
     //rectangle
@@ -68,6 +72,20 @@
             stroke: 'magenta'
         })
     canvas.add(ellipse)
+
+    console.log(canvas.getObjects())
+
+    const handleRectBtnClick=()=>{
+        if(rectBtn.innerText=="add")
+        {
+            canvas.add(rectangle)
+            rectBtn.innerText="remove"
+        }else{
+            canvas.remove(rectangle)
+            rectBtn.innerText="add"
+        }
+    }
+    
 </script>
 
 </html>
