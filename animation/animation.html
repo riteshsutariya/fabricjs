@@ -5,8 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animation in fabricjs</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../fabric.js"></script>
+    <style>
+        .btn-container{
+            display: flex;
+            margin-top: 1em;
+        }
+        .btn{
+            padding: 8px;
+            margin-right: 1.5em;
+        }
+    </style>
 </head>
 <body>
-    
+    <canvas width="1024" height="728" id="canvas"></canvas>
+
+    <div class="btn-container">
+        <button class="btn" id="btn-translate-right">translate(right)</button>
+        <button class="btn" id="btn-translate-left">translate(left)</button>
+
+        <button class="btn" id="btn-rotate-clockwise">rotate(5%)</button>
+        <button class="btn" id="btn-rotate-anti-clockwise">rotate(-5%)</button>
+
+    </div>
 </body>
+<script>
+   const canvas=new fabric.Canvas("canvas");
+
+   //animate button
+   const btnTranslateRight=document.getElementById("btn-translate-right")
+   const btnTranslateLeft=document.getElementById("btn-translate-left")
+
+   const btnRotateClockwise=document.getElementById("btn-rotate-clockwise")
+   const btnRotateAntiClockwise=document.getElementById("btn-rotate-anti-clockwise")
+
+
+   //rectangle
+   const rect=new fabric.Rect({
+    top:100,
+    left:100,
+    height:150,
+    width:250,
+    fill:'purple'
+   })
+
+   canvas.add(rect)
+
+   const translateRectLeft=()=>{
+     rect.animate('left','+=100',{onChange:canvas.renderAll.bind(canvas)})
+   }
+
+   const translateRectRight=()=>{
+     rect.animate('left','-=100',{onChange:canvas.renderAll.bind(canvas)})
+   }
+
+   const rotateRectClockwise=()=>{
+    rect.animate('angle','+=5%',{onChange:canvas.renderAll.bind(canvas)})
+   }
+
+   const rotateRectAntiClockwise=()=>{
+    rect.animate('angle','-=5%',{onChange:canvas.renderAll.bind(canvas)})
+   }
+
+   btnTranslateLeft.addEventListener('click',translateRectLeft)
+   btnTranslateRight.addEventListener('click',translateRectRight)
+
+   btnRotateClockwise.addEventListener('click',rotateRectClockwise)
+   btnRotateClockwise.addEventListener('click',rotateRectAntiClockwise)
+
+</script>
 </html>
