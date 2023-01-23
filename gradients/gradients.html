@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gradients in fabricjs</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../fabric.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas" height="768" width="1024"> </canvas>
+  </body>
+  <script>
+    const canvas = new fabric.Canvas("canvas");
+
+    const circle = new fabric.Circle({
+      top: 100,
+      left: 125,
+      radius: 50,
+      strokeWidth: 1,
+      stroke: "rgba(25, 89, 125)",
+    });
+
+    //creating gradient
+    let gradient = new fabric.Gradient({
+      type: "linear",
+      gradientUnits: "percentage",
+      coords: {
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+      },
+      colorStops: [
+        { offset: 0, color: "#73006b" },
+        { offset: 1, color: "#0231a1" },
+      ],
+    });
+
+    circle.set("fill", gradient);
+    canvas.add(circle);
+  </script>
+</html>
