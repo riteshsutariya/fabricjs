@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colors in fabricjs</title>
+    <script src="../fabric.js"></script>
+  </head>
+  <body>
+    <div id="context">
+      <input type="color" name="color" id="col1" />
+    </div>
+    <div class="overlay">
+      <input type="color" name="redish" id="redish" />
+      <span>+</span>
+      <input type="color" name="greenish" id="greenish" />
+      <span>=</span>
+      <input type="color" name="overlayVal" id="overlayVal" />
+    </div>
+  </body>
+  <script>
+    const context = document.getElementById("context");
+    const col1Element = document.getElementById("col1");
+    const col1 = new fabric.Color("#5ff");
+    console.log(col1.toHex());
+    col1Element.value = `#${col1.toHex()}`;
+
+    var colVar = new fabric.Color("#123123");
+    console.log("fabric color object: ", colVar);
+    console.log("hex value: " + colVar.toHex());
+    console.log("rgb value: " + colVar.toRgb());
+
+    //we can also overlay one color with another
+    var redish = new fabric.Color("#f55");
+    var redishTemp = new fabric.Color("#f55");
+    var greenish = new fabric.Color("#5f5");
+
+    redish.overlayWith(greenish).toHex();
+    // var grayScaleVal = redish.toGrayscale().toHex();
+    document.getElementById("redish").value = `#${redishTemp.toHex()}`;
+    document.getElementById("greenish").value = `#${greenish.toHex()}`;
+    document.getElementById("overlayVal").value = `#${redish.toHex()}`;
+  </script>
+</html>
