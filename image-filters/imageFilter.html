@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image filters in fabricjs</title>
+    <script src="../fabric.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <img src="flowers.jpg" alt="" id="flowers-img" />
+  </body>
+  <script>
+    const canvas = new fabric.Canvas("canvas");
+
+    const flowerimg = document.getElementById("flowers-img");
+
+    fabric.Image.fromURL("flowers.jpg", function (img) {
+      //we can add filters using push,unshift,slice array methods
+      img.filters.push(
+        // new fabric.Image.filters.Grayscale(),
+        new fabric.Image.filters.Sepia(),
+        new fabric.Image.filters.Saturation({
+          saturation: 1,
+        })
+        // new fabric.Image.filters.Brightness({
+        //   brightness: 0.1,
+        // })
+        // new fabric.Image.filters.Blur({
+        //   blur: 0,
+        // })
+      );
+
+      //we can also remove filters using pop,shift,splice array methods
+      img.filters.shift();
+
+      //apply filters
+      img.applyFilters();
+      //add image onto canvas
+      canvas.add(img);
+    });
+
+    canvas.renderAll();
+  </script>
+</html>
