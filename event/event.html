@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>events in fabricjs</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../fabric.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas" width="1024" height="768"> </canvas>
+  </body>
+  <script>
+    const canvas = new fabric.Canvas("canvas");
+    const rect = new fabric.Rect({
+      height: 150,
+      width: 150,
+      fill: "red",
+      top: 50,
+      left: 50,
+    });
+    canvas.add(rect);
+    rect.on("selected", () => {
+      console.log("rectangle selected..");
+    });
+    const circle = new fabric.Circle({
+      radius: 48,
+      fill: "purple",
+      left: 150,
+      top: 150,
+    });
+    canvas.add(circle);
+    circle.on("selected", () => {
+      console.log("circle selected");
+    });
+  </script>
+</html>
