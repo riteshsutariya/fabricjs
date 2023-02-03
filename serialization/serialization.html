@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>serailization in fabricjs</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../fabric.js"></script>
+</head>
+
+<body>
+    <canvas id="canvas" width="1024" height="768">
+
+    </canvas>
+</body>
+<script>
+    let canvas = new fabric.Canvas("canvas");
+    canvas.backgroundColor = "red";
+    const rect = new fabric.Rect({
+        top: 15,
+        left: 120,
+        height: 100,
+        width: 150,
+        fill: "purple"
+    })
+    canvasJson = JSON.stringify(canvas);
+    rect.stroke = "2"
+    canvas.add(rect)
+
+    //text object
+    const text = new fabric.Text("Hello", {
+        top: 40,
+        lrft: 80,
+        fill: "white"
+    })
+
+    canvas.add(text);
+
+    //serialization
+    canvasJson = JSON.stringify(canvas);
+    console.log("json:", canvasJson);
+    console.log()
+    //deserialization
+    console.log("parsed: ", JSON.parse(canvasJson))
+    //to SVG    
+    console.log("svg: ", canvas.toSVG());
+</script>
+
+</html>
